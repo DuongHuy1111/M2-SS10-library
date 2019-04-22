@@ -1,5 +1,6 @@
 <?php
 include "../database/DBConnect.php";
+include "../class/StudentDB.php";
 include "../class/Student.php";
 ?>
 <!doctype html>
@@ -24,8 +25,7 @@ include "../class/Student.php";
 </head>
 <body>
 
-<form method="post" style="width: :300px" class="container">
-    <fieldset>
+<form method="post" style="width:300px" class="container">
         Fullname <input type="text" name="name" class="form-control">
         <br><br>
         Birth <input type="text" name="birth" class="form-control">
@@ -36,8 +36,7 @@ include "../class/Student.php";
         <br><br>
         Address <input type="text" name="address" class="form-control">
         <br><br>
-        <input type="submit" value="Creat" class="btn btn-primary">
-    </fieldset>
+        <input type="submit" value="Create" class="btn btn-primary">
 </form>
 
 <?php
@@ -50,8 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
 
 
-    $student = new Student();
-    $student->createStudent($name, $birth, $phone, $email, $address);
+    $student = new Student($name, $birth, $phone, $email, $address);
+    $studentDB = new StudentDB();
+    $studentDB->createStudent($student);
 
     header("Location:../index.php");
 }

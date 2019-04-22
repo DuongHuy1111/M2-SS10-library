@@ -10,7 +10,7 @@ class BookDB
     {
         $dsn = "mysql:host=localhost;dbname=library";
         $username = 'root';
-        $password = 'Duongquanghuy@1';
+        $password = '12345678';
         $database = new DBConnect($dsn, $username, $password);
         $this->connect = $database->connect();
     }

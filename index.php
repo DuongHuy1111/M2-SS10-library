@@ -1,8 +1,8 @@
 <?php
-include 'class/Student.php';
+include 'class/StudentDB.php';
 include "database/DBConnect.php";
 
-$student = new Student();
+$student = new StudentDB();
 $students = $student->getAll();
 ?>
 
@@ -13,6 +13,10 @@ $students = $student->getAll();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Document</title>
     <h1>Library</h1>
 </head>
@@ -31,12 +35,16 @@ $students = $student->getAll();
 <table border="1">
     <tr>
         <th>
-            <a href="student/create.php">Create</a>
+            <a href="student/create.php">
+                <button type="submit" class="btn btn-success">Create</button>
+            </a>
         </th>
     </tr>
     <tr>
         <th>
-            <a href="class/listBook.php">Books</a>
+            <a href="class/listBook.php">
+                <button type="submit" class="btn btn-success">Books</button>
+            </a>
         </th>
     </tr>
     <tr>
@@ -58,7 +66,14 @@ $students = $student->getAll();
         <td><?php echo $item ['email'] ?></td>
         <td><?php echo $item ['address'] ?></td>
         <td>
-            <a href="student/delete.php?id=<?php echo $item ['id']?>">Remove</a>
+            <a href="student/delete.php?id=<?php echo $item ['id']?>">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </a>
+        </td>
+        <td>
+            <a href="student/updateStudent.php?id=<?php echo $item['id']?>">
+                <button type="submit" class="btn btn-info">Update</button>
+            </a>
         </td>
 
     </tr>
